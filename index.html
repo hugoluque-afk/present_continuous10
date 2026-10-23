@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es" translate="no">
+<html lang="en" translate="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google" content="notranslate">
-    <title>Desafío: Present Continuous</title>
+    <title>Present Continuous: Action Verbs!</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
@@ -13,7 +13,7 @@
             font-family: 'Inter', sans-serif;
             margin: 0;
             overflow: hidden;
-            background-color: #064e3b; /* Emerald dark */
+            background-color: #022c22; /* dark emerald background */
         }
 
         @keyframes fadeInUp {
@@ -64,26 +64,26 @@
             border-radius: 10px;
         }
         #autocomplete-list::-webkit-scrollbar-thumb {
-            background: #6ee7b7; /* Emerald */
+            background: #cbd5e1; 
             border-radius: 10px;
         }
         #autocomplete-list::-webkit-scrollbar-thumb:hover {
-            background: #34d399; 
+            background: #94a3b8; 
         }
 
         .custom-scrollbar::-webkit-scrollbar {
             width: 8px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
-            background: #064e3b; 
+            background: #022c22; 
             border-radius: 10px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #059669; 
+            background: #047857; 
             border-radius: 10px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #047857; 
+            background: #059669; 
         }
     </style>
 </head>
@@ -92,72 +92,71 @@
     <!-- OFFLINE BADGE INDICATOR -->
     <div id="offline-badge" class="hidden absolute top-4 left-4 z-50 bg-red-600/90 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg backdrop-blur-sm border border-red-400 flex items-center space-x-2 animate-pulse">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path><line x1="2" y1="2" x2="22" y2="22"></line></svg>
-        <span id="offline-text">Modo Sin Conexión (Solo Local)</span>
+        <span id="offline-text">Offline Mode (Local Only)</span>
     </div>
 
     <!-- DECORATIVE BACKGROUNDS -->
     <div id="bg-decorations" class="hidden">
-        <div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-emerald-300/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
-        <div class="fixed bottom-[-10%] right-[-10%] w-[40rem] h-[40rem] bg-teal-300/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+        <div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-teal-300/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+        <div class="fixed bottom-[-10%] right-[-10%] w-[40rem] h-[40rem] bg-emerald-300/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
     </div>
 
     <!-- WELCOME SCREEN -->
-    <div id="welcome-screen" class="min-h-screen w-full bg-gradient-to-br from-emerald-900 via-green-800 to-teal-900 flex flex-col items-center justify-center p-6 text-white absolute inset-0 z-10 transition-opacity duration-300 overflow-y-auto">
+    <div id="welcome-screen" class="min-h-screen w-full bg-gradient-to-br from-emerald-900 via-teal-800 to-emerald-900 flex flex-col items-center justify-center p-6 text-white absolute inset-0 z-10 transition-opacity duration-300 overflow-y-auto">
         
         <div class="flex flex-col lg:flex-row items-center lg:items-stretch justify-center gap-8 w-full max-w-6xl z-10 my-auto mt-12 md:mt-auto">
             
             <!-- LEFT PANEL: Main Game Start -->
             <div class="max-w-2xl w-full text-center space-y-8 p-8 md:p-10 bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/20 animate-fade-in-up flex flex-col justify-center">
-                <div class="inline-block p-4 bg-gradient-to-tr from-emerald-400 to-teal-500 rounded-full shadow-lg mx-auto w-max">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"></path></svg>
+                <div class="inline-block p-4 bg-gradient-to-tr from-green-400 to-teal-500 rounded-full shadow-lg mx-auto w-max">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                 </div>
-                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-green-300 to-teal-300 drop-shadow-sm">
-                    Present Continuous
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-green-300 to-emerald-200 drop-shadow-sm">
+                    Action in Progress
                 </h1>
-                <h2 class="text-2xl md:text-3xl font-semibold text-emerald-200">
-                    ¡Desafío de Gramática y Vocabulario!
+                <h2 class="text-2xl md:text-3xl font-semibold text-teal-100">
+                    Present Continuous Challenge!
                 </h2>
-                <p class="text-lg text-gray-300 max-w-md mx-auto hidden md:block">
-                    ¡Domina el Presente Continuo con más de 90 ejercicios únicos!
+                <p class="text-lg text-gray-200 max-w-md mx-auto hidden md:block">
+                    Master the Present Continuous tense. Over 100+ unique exercises!
                 </p>
 
                 <div class="max-w-sm mx-auto w-full mt-4 mb-4 relative text-left">
-                    <input type="text" id="player-name" autocomplete="off" placeholder="Ingresa tu nombre para empezar..." class="w-full px-6 py-4 rounded-full text-slate-800 font-bold text-xl text-center focus:outline-none focus:ring-4 focus:ring-emerald-500 shadow-inner" maxlength="50">
+                    <input type="text" id="player-name" autocomplete="off" placeholder="Enter your name to start..." class="w-full px-6 py-4 rounded-full text-slate-800 font-bold text-xl text-center focus:outline-none focus:ring-4 focus:ring-emerald-500 shadow-inner" maxlength="50">
                     
-                    <!-- MENU DESPLEGABLE DE AUTOCOMPLETADO -->
                     <ul id="autocomplete-list" class="hidden absolute top-[110%] left-0 right-0 bg-white rounded-2xl shadow-2xl border border-slate-200 max-h-48 overflow-y-auto z-50 text-base font-semibold">
                     </ul>
 
-                    <p id="name-error" class="hidden text-red-300 font-semibold mt-2 drop-shadow-md text-center">¡Por favor, selecciona un nombre válido de la lista!</p>
+                    <p id="name-error" class="hidden text-red-300 font-semibold mt-2 drop-shadow-md text-center">Please select a valid name from the list!</p>
                 </div>
 
                 <div class="flex flex-col items-center space-y-4">
-                    <button onclick="startGame()" class="group relative px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full font-bold text-xl md:text-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 active:scale-95 flex items-center justify-center mx-auto space-x-3 overflow-hidden">
+                    <button onclick="startGame()" class="group relative px-8 py-4 bg-gradient-to-r from-green-500 to-teal-600 rounded-full font-bold text-xl md:text-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 active:scale-95 flex items-center justify-center mx-auto space-x-3 overflow-hidden">
                         <span class="absolute inset-0 w-full h-full bg-white/20 group-hover:animate-pulse"></span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                        <span>Empezar a Aprender</span> 
+                        <span>Start Learning</span> 
                     </button>
                     <p class="text-white/50 text-sm font-medium tracking-wide">
-                        Desarrollado por: Hugo Luque
+                        Developed by: Hugo Luque
                     </p>
                 </div>
             </div>
 
             <!-- RIGHT PANEL: Mini Leaderboard -->
             <div class="w-full lg:w-80 bg-black/20 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/10 animate-fade-in-up p-6 flex flex-col relative overflow-hidden" style="animation-delay: 0.1s;">
-                <div class="absolute top-0 right-0 p-16 bg-emerald-500/10 blur-3xl rounded-full pointer-events-none"></div>
+                <div class="absolute top-0 right-0 p-16 bg-amber-500/10 blur-3xl rounded-full pointer-events-none"></div>
                 
-                <h3 class="text-emerald-400 font-black text-2xl mb-6 flex items-center justify-center space-x-2 border-b border-white/10 pb-4 relative z-10">
+                <h3 class="text-amber-400 font-black text-2xl mb-6 flex items-center justify-center space-x-2 border-b border-white/10 pb-4 relative z-10">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
-                    <span>Top 5 Estudiantes</span>
+                    <span>Top 5 Students</span>
                 </h3>
                 
                 <div id="mini-leaderboard-list" class="space-y-3 text-sm flex-1 relative z-10">
-                    <p class="text-gray-400 text-center mt-8">Conectando a Sheets...</p>
+                    <p class="text-gray-400 text-center mt-8">Connecting to Sheets...</p>
                 </div>
                 
-                <button onclick="showLeaderboard('welcome-screen')" class="mt-6 w-full py-4 bg-emerald-600/30 hover:bg-emerald-600/50 rounded-2xl text-emerald-200 hover:text-white text-sm md:text-base font-bold transition-all border border-emerald-400/30 relative z-10 shadow-lg">
-                    Ver Tabla de Clasificación Global
+                <button onclick="showLeaderboard('welcome-screen')" class="mt-6 w-full py-4 bg-teal-600/30 hover:bg-teal-600/50 rounded-2xl text-teal-200 hover:text-white text-sm md:text-base font-bold transition-all border border-teal-400/30 relative z-10 shadow-lg">
+                    View Full Global Leaderboard
                 </button>
             </div>
 
@@ -174,23 +173,22 @@
     </div>
 
     <!-- PLAYING SCREEN -->
-    <div id="playing-screen" class="hidden min-h-screen w-full bg-slate-50 flex flex-col absolute inset-0 z-10 overflow-y-auto">
+    <div id="playing-screen" class="hidden min-h-screen w-full bg-emerald-50 flex flex-col absolute inset-0 z-10 overflow-y-auto">
         
         <!-- Header -->
-        <header class="w-full bg-white shadow-sm p-4 flex justify-between items-center z-10 sticky top-0">
+        <header class="w-full bg-white shadow-sm p-4 flex justify-between items-center z-10 sticky top-0 border-b border-emerald-100">
             <div class="flex items-center space-x-2">
                 <div id="level-display" class="bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full font-black text-lg shadow-inner">
-                    Nivel 1
+                    Level 1
                 </div>
             </div>
 
-            <button onclick="stopGame()" class="text-gray-400 hover:text-red-500 transition-colors p-2" title="Detener Juego">
+            <button onclick="stopGame()" class="text-gray-400 hover:text-red-500 transition-colors p-2" title="Stop Game">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
             </button>
 
             <div class="flex items-center space-x-6">
                 <div id="hearts-container" class="flex items-center space-x-1">
-                    <!-- Hearts generated by JS -->
                 </div>
                 <div class="text-2xl font-black text-slate-700">
                     <span id="score-display">0</span> <span class="text-sm font-medium text-slate-500">PTS</span>
@@ -200,7 +198,7 @@
 
         <!-- Timer Bar -->
         <div class="w-full bg-slate-200 h-2 z-10 relative">
-            <div id="timer-bar" class="bg-gradient-to-r from-emerald-400 to-green-500 h-2 transition-all duration-100 ease-linear" style="width: 100%"></div>
+            <div id="timer-bar" class="bg-gradient-to-r from-emerald-400 to-teal-500 h-2 transition-all duration-100 ease-linear" style="width: 100%"></div>
         </div>
         <div class="w-full text-center absolute top-20 z-10 pointer-events-none">
             <span id="timer-text" class="text-xl font-black text-slate-400 drop-shadow-sm hidden">15s</span>
@@ -209,39 +207,33 @@
         <!-- Main Game Area -->
         <main class="flex-1 flex flex-col items-center justify-center p-4 w-full max-w-4xl mx-auto relative z-0">
             
-            <!-- Feedback Overlay -->
             <div id="feedback-overlay" class="hidden absolute inset-0 z-30 flex items-center justify-center pointer-events-none">
                 <h2 id="feedback-text" class="text-4xl md:text-6xl font-black drop-shadow-2xl animate-bounce-custom text-center text-white bg-emerald-500 px-8 py-4 rounded-full border-4 border-white shadow-2xl inline-block">
-                    ¡Guau!
+                    Wow!
                 </h2>
             </div>
 
-            <!-- Question Card -->
-            <div id="question-card" class="w-full bg-white rounded-3xl shadow-[0_20px_50px_rgba(16,_185,_129,_0.07)] border border-slate-100 p-6 md:p-10 flex flex-col relative overflow-hidden hidden">
+            <div id="question-card" class="w-full bg-white rounded-3xl shadow-[0_20px_50px_rgba(4,_120,_87,_0.07)] border border-emerald-100 p-6 md:p-10 flex flex-col relative overflow-hidden hidden">
                 
                 <div class="flex items-start justify-between mb-8 md:mb-12">
                     <h2 id="question-text" class="text-3xl md:text-5xl font-bold leading-tight text-slate-800 flex-1">
-                        <!-- Question injected by JS -->
                     </h2>
                     <button onclick="playCurrentAudio()" class="ml-4 p-4 bg-emerald-50 text-emerald-600 rounded-full hover:bg-emerald-100 hover:scale-110 transition-all shadow-sm active:scale-95 flex-shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
                     </button>
                 </div>
 
-                <!-- Options -->
                 <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full">
-                    <!-- Buttons injected by JS -->
                 </div>
 
-                <!-- Hint Section -->
                 <div class="mt-8 flex flex-col items-center border-t border-slate-100 pt-6 min-h-[80px]">
-                    <button id="show-hint-btn" onclick="showHint()" class="flex items-center space-x-2 text-emerald-500 hover:text-emerald-600 font-medium px-4 py-2 rounded-full hover:bg-emerald-50 transition-colors">
+                    <button id="show-hint-btn" onclick="showHint()" class="flex items-center space-x-2 text-amber-500 hover:text-amber-600 font-medium px-4 py-2 rounded-full hover:bg-amber-50 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1.3.5 2.6 1.5 3.5.8.8 1.3 1.5 1.5 2.5"></path><line x1="9" y1="18" x2="15" y2="18"></line><line x1="10" y1="22" x2="14" y2="22"></line></svg>
-                        <span>Mostrar Pista</span>
+                        <span>Show Hint</span>
                     </button>
                     
-                    <div id="hint-content" class="hidden bg-emerald-50 text-emerald-800 p-4 rounded-xl flex items-start space-x-3 w-full max-w-2xl animate-fade-in-up">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-1 text-emerald-500"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1.3.5 2.6 1.5 3.5.8.8 1.3 1.5 1.5 2.5"></path><line x1="9" y1="18" x2="15" y2="18"></line><line x1="10" y1="22" x2="14" y2="22"></line></svg>
+                    <div id="hint-content" class="hidden bg-amber-50 text-amber-800 p-4 rounded-xl flex items-start space-x-3 w-full max-w-2xl animate-fade-in-up">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-1 text-amber-500"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1.3.5 2.6 1.5 3.5.8.8 1.3 1.5 1.5 2.5"></path><line x1="9" y1="18" x2="15" y2="18"></line><line x1="10" y1="22" x2="14" y2="22"></line></svg>
                         <p id="hint-text" class="text-lg"></p>
                     </div>
                 </div>
@@ -253,55 +245,54 @@
     <!-- GAMEOVER SCREEN -->
     <div id="gameover-screen" class="hidden min-h-screen w-full bg-gradient-to-br from-red-900 via-gray-900 to-black flex items-center justify-center p-6 text-white absolute inset-0 z-30">
         <div class="max-w-md w-full text-center space-y-6 p-8 bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl border border-red-500/30 animate-fade-in-up">
-            <h1 class="text-5xl font-black text-red-500 drop-shadow-md">Juego Terminado</h1>
-            <p class="text-2xl text-gray-300">Nivel Alcanzado: <span id="final-level" class="font-bold text-white">1</span></p>
-            <p class="text-2xl text-gray-300">Puntaje Final: <span id="final-score" class="font-bold text-white">0</span></p>
-            <p class="text-xl text-gray-400">Tiempo Total Vivo: <span id="final-time" class="font-bold text-white">0</span>s</p>
+            <h1 class="text-5xl font-black text-red-500 drop-shadow-md">Game Over</h1>
+            <p class="text-2xl text-gray-300">Level Reached: <span id="final-level" class="font-bold text-white">1</span></p>
+            <p class="text-2xl text-gray-300">Final Score: <span id="final-score" class="font-bold text-white">0</span></p>
+            <p class="text-xl text-gray-400">Total Time Alive: <span id="final-time" class="font-bold text-white">0</span>s</p>
             
-            <button onclick="showLeaderboard('gameover-screen')" class="w-full py-4 bg-gradient-to-r from-teal-500 to-emerald-600 rounded-2xl font-bold text-xl shadow-lg hover:scale-105 transition-transform active:scale-95 flex items-center justify-center space-x-2 mt-4">
+            <button onclick="showLeaderboard('gameover-screen')" class="w-full py-4 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl font-bold text-xl shadow-lg hover:scale-105 transition-transform active:scale-95 flex items-center justify-center space-x-2 mt-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"></path><path d="M5 20V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14"></path><path d="M9 20V12h6v8"></path></svg>
-                <span>Ver Clasificación</span>
+                <span>View Leaderboard</span>
             </button>
 
-            <button onclick="startGame()" class="mt-4 w-full py-4 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl font-bold text-xl shadow-lg hover:scale-105 transition-transform active:scale-95 flex items-center justify-center space-x-2">
+            <button onclick="startGame()" class="mt-4 w-full py-4 bg-gradient-to-r from-green-500 to-teal-600 rounded-2xl font-bold text-xl shadow-lg hover:scale-105 transition-transform active:scale-95 flex items-center justify-center space-x-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
-                <span>Jugar de Nuevo</span>
+                <span>Play Again</span>
             </button>
             <button onclick="stopGame()" class="w-full py-4 bg-gray-700/50 hover:bg-gray-700 rounded-2xl font-bold text-xl shadow-lg transition-colors flex items-center justify-center space-x-2">
-                <span>Menú Principal</span>
+                <span>Main Menu</span>
             </button>
         </div>
     </div>
 
     <!-- LEADERBOARD GLOBAL SCREEN -->
-    <div id="leaderboard-screen" class="hidden min-h-screen w-full bg-[#064e3b] flex flex-col items-center p-4 md:p-8 text-white absolute inset-0 z-40 overflow-hidden">
+    <div id="leaderboard-screen" class="hidden min-h-screen w-full bg-[#022c22] flex flex-col items-center p-4 md:p-8 text-white absolute inset-0 z-40 overflow-hidden">
         
-        <div class="max-w-4xl w-full flex flex-col h-full max-h-[90vh] bg-emerald-900 rounded-3xl shadow-2xl border border-emerald-700 p-6 md:p-8 animate-fade-in-up mt-8">
+        <div class="max-w-4xl w-full flex flex-col h-full max-h-[90vh] bg-teal-900 rounded-3xl shadow-2xl border border-teal-700 p-6 md:p-8 animate-fade-in-up mt-8">
             
-            <h1 class="text-4xl md:text-5xl font-black text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-teal-400 drop-shadow-sm shrink-0">Clasificación Global en Vivo</h1>
+            <h1 class="text-4xl md:text-5xl font-black text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 drop-shadow-sm shrink-0">Live Global Leaderboard</h1>
             
-            <div class="bg-emerald-950 rounded-2xl shadow-inner border border-emerald-700/50 flex-1 overflow-hidden flex flex-col relative">
+            <div class="bg-teal-950 rounded-2xl shadow-inner border border-teal-800/50 flex-1 overflow-hidden flex flex-col relative">
                 <div class="overflow-y-auto flex-1 custom-scrollbar">
                     <table class="w-full text-left border-collapse">
-                        <thead class="bg-emerald-950 border-b border-emerald-700 sticky top-0 z-10 shadow-md">
-                            <tr class="text-emerald-400 text-xs md:text-sm uppercase tracking-widest font-bold">
-                                <th class="p-4 md:px-6 w-20">Rango</th>
-                                <th class="p-4 md:px-6">Nombre</th>
-                                <th class="p-4 md:px-6 text-center">Puntaje</th>
-                                <th class="p-4 md:px-6 text-right">Tiempo (s)</th>
+                        <thead class="bg-teal-950 border-b border-teal-800 sticky top-0 z-10 shadow-md">
+                            <tr class="text-teal-400 text-xs md:text-sm uppercase tracking-widest font-bold">
+                                <th class="p-4 md:px-6 w-20">Rank</th>
+                                <th class="p-4 md:px-6">Name</th>
+                                <th class="p-4 md:px-6 text-center">Score</th>
+                                <th class="p-4 md:px-6 text-right">Time (s)</th>
                             </tr>
                         </thead>
                         <tbody id="leaderboard-list" class="text-sm md:text-base font-semibold">
-                            <!-- Filled by JS -->
-                            <tr><td colspan="4" class="text-center p-6 text-emerald-500">Cargando récords en vivo...</td></tr>
+                            <tr><td colspan="4" class="text-center p-6 text-teal-500">Loading live records...</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
             
             <div class="flex justify-center mt-6 shrink-0">
-                <button id="lb-back-btn" onclick="switchScreen('welcome-screen')" class="px-12 py-4 bg-emerald-700 hover:bg-emerald-600 rounded-xl font-bold text-xl shadow-lg transition-colors text-white border border-emerald-600 w-full md:w-auto">
-                    Volver
+                <button id="lb-back-btn" onclick="switchScreen('welcome-screen')" class="px-12 py-4 bg-teal-700 hover:bg-teal-600 rounded-xl font-bold text-xl shadow-lg transition-colors text-white border border-teal-600 w-full md:w-auto">
+                    Back
                 </button>
             </div>
 
@@ -310,27 +301,16 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // ==========================================
-        // SISTEMA ANTI-TRAMPA Y ANTI-HACKEOS LOCALES
-        // ==========================================
-        
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
-
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'F12' || 
-               (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'C' || e.key === 'J')) || 
-               (e.ctrlKey && e.key === 'U')) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'C' || e.key === 'J')) || (e.ctrlKey && e.key === 'U')) {
                 e.preventDefault();
                 return false;
             }
         });
 
-        // 🚀 URL DEL SCRIPT
         const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbxe3uIyTc2l_NQ4varI2GJ_mEq8rSdG08cIMwYgz2FjuC6kTZWVvFUobQ-K1DqolxzK/exec"; 
 
-        // --- GLOBAL VARIABLES ---
         let playerName = "";
         let score = 0;
         let lives = 5;
@@ -363,14 +343,13 @@
 
         if (GOOGLE_SHEETS_URL.trim() === "") {
             document.getElementById('offline-badge').classList.remove('hidden');
-            document.getElementById('offline-text').innerText = "URL de Google Sheets no configurada. Récords locales.";
+            document.getElementById('offline-text').innerText = "Offline Mode (Local Only)";
         }
 
         if ('speechSynthesis' in window) {
             window.speechSynthesis.getVoices();
         }
 
-        // --- LÓGICA DE AUTOCOMPLETADO DE NOMBRES ---
         async function fetchStudentNames() {
             try {
                 const response = await fetch(GOOGLE_SHEETS_URL + "?action=getNames");
@@ -380,7 +359,6 @@
                     availableStudentNames = data;
                 }
             } catch (e) {
-                console.warn("Usando lista de respaldo.");
                 availableStudentNames = [
                     "Hugo Luque", "Maria Fernandez", "Juan Perez", "Carlos Ruiz", 
                     "Ana Gomez", "Luis Torres", "Sofia Morales", "Jorge Ramirez"
@@ -438,153 +416,121 @@
             }
         });
 
-
-        // --- VOCABULARIO: PRESENT CONTINUOUS ---
+        // --- VOCABULARIO (Present Continuous) ---
         const VOCAB_WORDS = [
-            "playing", "running", "eating", "studying", "watching", "sleeping", "working", 
-            "writing", "reading", "cooking", "dancing", "singing", "swimming", "driving", 
-            "listening", "speaking", "cleaning", "walking", "jumping", "drinking", 
-            "flying", "crying", "laughing", "buying", "selling", "teaching", "learning", 
-            "thinking", "smiling", "raining"
+            "running", "swimming", "studying", "playing", "eating", "sleeping", 
+            "writing", "reading", "watching", "listening", "cooking", "cleaning", 
+            "driving", "walking", "talking", "dancing", "singing", "working", 
+            "painting", "drawing", "shopping", "crying", "laughing", "jumping",
+            "flying", "riding", "baking", "typing", "fixing", "building"
         ];
 
         const HINTS = {
-            "playing": "Participando en un juego o deporte.",
-            "running": "Moviéndose rápidamente a pie.",
-            "eating": "Consumiendo comida.",
-            "studying": "Dedicando tiempo a aprender algo nuevo.",
-            "watching": "Mirando algo atentamente, como la televisión.",
-            "sleeping": "Descansando con los ojos cerrados.",
-            "working": "Realizando una actividad laboral.",
-            "writing": "Formando letras o palabras en papel o pantalla.",
-            "reading": "Comprendiendo el significado de letras o símbolos escritos.",
-            "cooking": "Preparando comida con calor.",
-            "dancing": "Moviendo el cuerpo al ritmo de la música.",
-            "singing": "Haciendo sonidos musicales con la voz.",
-            "swimming": "Moviéndose a través del agua.",
-            "driving": "Operando y controlando un vehículo.",
-            "listening": "Prestando atención a un sonido.",
-            "speaking": "Comunicándose vocalmente.",
-            "cleaning": "Quitando la suciedad de un lugar.",
-            "walking": "Avanzando a paso normal.",
-            "jumping": "Impulsándose en el aire.",
-            "drinking": "Ingiriendo líquidos.",
-            "flying": "Moviéndose por el aire.",
-            "crying": "Derramando lágrimas por emoción o dolor.",
-            "laughing": "Expresando diversión con sonidos y gestos.",
-            "buying": "Adquiriendo algo a cambio de dinero.",
-            "selling": "Dando algo a cambio de dinero.",
-            "teaching": "Instruyendo o compartiendo conocimientos.",
-            "learning": "Adquiriendo nuevos conocimientos o habilidades.",
-            "thinking": "Usando la mente para considerar algo.",
-            "smiling": "Formando una expresión feliz con la boca.",
-            "raining": "Agua cayendo del cielo en forma de gotas."
+            "running": "Moving quickly on foot.",
+            "swimming": "Moving through water using your arms and legs.",
+            "studying": "Spending time learning about an academic subject.",
+            "playing": "Engaging in activity for enjoyment and recreation.",
+            "eating": "Consuming food.",
+            "sleeping": "Resting with your eyes closed and being unconscious.",
+            "writing": "Marking letters or words on a surface with a pen or pencil.",
+            "reading": "Looking at and comprehending the meaning of written text.",
+            "watching": "Looking at or observing something attentively.",
+            "listening": "Paying attention to a sound.",
+            "cooking": "Preparing food by applying heat.",
+            "cleaning": "Making something free of dirt or mess.",
+            "driving": "Operating and controlling the direction of a vehicle.",
+            "walking": "Moving at a regular pace by lifting and setting down each foot.",
+            "talking": "Speaking in order to give information or express ideas.",
+            "dancing": "Moving rhythmically to music.",
+            "singing": "Making musical sounds with the voice.",
+            "working": "Doing physical or mental activity in order to achieve a purpose.",
+            "painting": "Applying paint to a surface to create an image.",
+            "drawing": "Producing a picture or diagram by making lines and marks.",
+            "shopping": "Visiting stores to buy goods.",
+            "crying": "Shedding tears, usually due to emotion.",
+            "laughing": "Making spontaneous sounds and movements to express amusement.",
+            "jumping": "Pushing oneself off a surface into the air using the legs.",
+            "flying": "Moving through the air using wings or an aircraft.",
+            "riding": "Sitting on and controlling the movement of an animal or vehicle.",
+            "baking": "Cooking food by dry heat in an oven.",
+            "typing": "Writing something by pressing keys on a keyboard.",
+            "fixing": "Repairing something that is broken.",
+            "building": "Constructing something by putting parts together."
         };
 
         const QUESTION_BANK = [
-            { q: "She is ___ a book in her bedroom.", a: "reading" },
-            { q: "They are ___ soccer in the park.", a: "playing" },
-            { q: "I am ___ for my English exam.", a: "studying" },
-            { q: "The dog is ___ fast to catch the ball.", a: "running" },
-            { q: "We are ___ a movie at the cinema.", a: "watching" },
-            { q: "The baby is ___ peacefully in his crib.", a: "sleeping" },
-            { q: "My father is ___ in his office.", a: "working" },
-            { q: "He is ___ an email to his boss.", a: "writing" },
-            { q: "My mother is ___ dinner in the kitchen.", a: "cooking" },
-            { q: "They are ___ salsa at the party.", a: "dancing" },
-            { q: "The choir is ___ a beautiful song.", a: "singing" },
-            { q: "The children are ___ in the pool.", a: "swimming" },
-            { q: "He is ___ his new car to the city.", a: "driving" },
-            { q: "I am ___ to my favorite podcast.", a: "listening" },
-            { q: "The teacher is ___ in front of the class.", a: "speaking" },
-            { q: "We are ___ the house for the guests.", a: "cleaning" },
-            { q: "They are ___ along the beach.", a: "walking" },
-            { q: "The kids are ___ on the trampoline.", a: "jumping" },
-            { q: "I am ___ a glass of cold water.", a: "drinking" },
-            { q: "The birds are ___ in the sky.", a: "flying" },
-            { q: "The little girl is ___ because she lost her toy.", a: "crying" },
-            { q: "Everyone is ___ at the funny joke.", a: "laughing" },
-            { q: "She is ___ new clothes at the mall.", a: "buying" },
-            { q: "The vendor is ___ fresh fruit at the market.", a: "selling" },
-            { q: "Mr. Smith is ___ mathematics today.", a: "teaching" },
-            { q: "The students are ___ how to program.", a: "learning" },
-            { q: "I am ___ about my future plans.", a: "thinking" },
-            { q: "She is ___ for the photograph.", a: "smiling" },
-            { q: "Take an umbrella, it is ___ outside.", a: "raining" },
-            // Extra variations
-            { q: "My brother is ___ a novel.", a: "reading" },
-            { q: "Are you ___ video games right now?", a: "playing" },
-            { q: "He is ___ very hard to pass the test.", a: "studying" },
-            { q: "Look! The cat is ___ away from the dog.", a: "running" },
-            { q: "She is ___ television in the living room.", a: "watching" },
-            { q: "Don't make noise, the baby is ___.", a: "sleeping" },
-            { q: "I am ___ late tonight at the office.", a: "working" },
+            { q: "She is ___ in the park to prepare for the marathon.", a: "running" },
+            { q: "The dog is ___ away from the postman right now.", a: "running" },
+            { q: "They are ___ in the pool because it's a hot day.", a: "swimming" },
+            { q: "The kids are ___ in the ocean for the first time.", a: "swimming" },
+            { q: "He is ___ for his math exam in the library.", a: "studying" },
+            { q: "We are ___ French this semester.", a: "studying" },
+            { q: "The boys are ___ soccer on the field.", a: "playing" },
+            { q: "Are they ___ a new video game right now?", a: "playing" },
+            { q: "I am ___ a delicious sandwich for lunch.", a: "eating" },
+            { q: "The baby is ___ his carrots slowly.", a: "eating" },
+            { q: "Shh! The baby is ___ in the bedroom.", a: "sleeping" },
+            { q: "My cat is ___ on the sofa.", a: "sleeping" },
             { q: "She is ___ a letter to her grandmother.", a: "writing" },
-            { q: "The chef is ___ a special dish.", a: "cooking" },
-            { q: "We are ___ together at the wedding.", a: "dancing" },
-            { q: "He is ___ his favorite rock song.", a: "singing" },
-            { q: "The ducks are ___ in the lake.", a: "swimming" },
-            { q: "She is ___ carefully because of the snow.", a: "driving" },
-            { q: "They are ___ to the radio.", a: "listening" },
-            { q: "The president is ___ to the nation.", a: "speaking" },
-            { q: "He is ___ his messy room.", a: "cleaning" },
-            { q: "I am ___ to the supermarket.", a: "walking" },
-            { q: "The frog is ___ from lily pad to lily pad.", a: "jumping" },
-            { q: "The cat is ___ milk from the bowl.", a: "drinking" },
-            { q: "The plane is ___ to London.", a: "flying" },
-            { q: "Why is the baby ___ loudly?", a: "crying" },
-            { q: "They are ___ because the movie is hilarious.", a: "laughing" },
-            { q: "We are ___ tickets for the concert.", a: "buying" },
-            { q: "They are ___ their old house.", a: "selling" },
-            { q: "She is ___ English to beginners.", a: "teaching" },
-            { q: "I am ___ Spanish very quickly.", a: "learning" },
-            { q: "He is ___ about the problem.", a: "thinking" },
-            { q: "The baby is ___ at her mother.", a: "smiling" },
-            { q: "It is ___ heavily in the city.", a: "raining" },
-            // Even more variations to ensure abundance
-            { q: "I am ___ the newspaper.", a: "reading" },
-            { q: "They are ___ chess quietly.", a: "playing" },
-            { q: "We are ___ biology at the library.", a: "studying" },
-            { q: "The athlete is ___ a marathon.", a: "running" },
-            { q: "He is ___ the birds in the garden.", a: "watching" },
-            { q: "The dog is ___ under the table.", a: "sleeping" },
-            { q: "They are ___ on a new project.", a: "working" },
-            { q: "I am ___ a story in my notebook.", a: "writing" },
-            { q: "Are you ___ pasta for lunch?", a: "cooking" },
-            { q: "She is ___ gracefully on stage.", a: "dancing" },
-            { q: "They are ___ loudly in the shower.", a: "singing" },
-            { q: "I am ___ in the ocean.", a: "swimming" },
-            { q: "We are ___ slowly in traffic.", a: "driving" },
-            { q: "She is ___ to classical music.", a: "listening" },
-            { q: "They are ___ in French.", a: "speaking" },
-            { q: "I am ___ the windows today.", a: "cleaning" },
-            { q: "She is ___ her dog in the park.", a: "walking" },
-            { q: "The monkey is ___ around.", a: "jumping" },
-            { q: "He is ___ hot coffee.", a: "drinking" },
-            { q: "The helicopter is ___ low.", a: "flying" },
-            { q: "The sad boy is ___.", a: "crying" },
-            { q: "We are ___ out loud.", a: "laughing" },
-            { q: "She is ___ groceries.", a: "buying" },
-            { q: "He is ___ used cars.", a: "selling" },
-            { q: "They are ___ children to read.", a: "teaching" },
-            { q: "She is ___ to ride a bike.", a: "learning" },
-            { q: "I am ___ of a good idea.", a: "thinking" },
-            { q: "He is ___ politely.", a: "smiling" },
-            { q: "It is ___ all day.", a: "raining" }
+            { q: "The author is ___ a new science fiction novel.", a: "writing" },
+            { q: "He is ___ a very interesting book about history.", a: "reading" },
+            { q: "They are ___ the newspaper to get the morning news.", a: "reading" },
+            { q: "We are ___ a movie at the cinema.", a: "watching" },
+            { q: "The family is ___ television in the living room.", a: "watching" },
+            { q: "She is ___ to her favorite music on her phone.", a: "listening" },
+            { q: "The students are ___ to the teacher carefully.", a: "listening" },
+            { q: "My dad is ___ dinner in the kitchen.", a: "cooking" },
+            { q: "The chef is ___ a special soup for the guests.", a: "cooking" },
+            { q: "They are ___ the house for the party.", a: "cleaning" },
+            { q: "He is ___ the windows because they are dirty.", a: "cleaning" },
+            { q: "She is ___ her car to work because it's raining.", a: "driving" },
+            { q: "The taxi is ___ very fast down the street.", a: "driving" },
+            { q: "We are ___ through the forest right now.", a: "walking" },
+            { q: "The old man is ___ his dog in the park.", a: "walking" },
+            { q: "The two friends are ___ on the phone for hours.", a: "talking" },
+            { q: "The manager is ___ to the employees about the new project.", a: "talking" },
+            { q: "They are ___ at the club tonight.", a: "dancing" },
+            { q: "The ballerina is ___ beautifully on stage.", a: "dancing" },
+            { q: "The choir is ___ a beautiful song in the church.", a: "singing" },
+            { q: "She is ___ in the shower again!", a: "singing" },
+            { q: "He is ___ late at the office to finish the report.", a: "working" },
+            { q: "The mechanics are ___ on the broken engine.", a: "working" },
+            { q: "The artist is ___ a beautiful landscape on the canvas.", a: "painting" },
+            { q: "They are ___ the walls of their new house blue.", a: "painting" },
+            { q: "The child is ___ a picture of his family.", a: "drawing" },
+            { q: "She is ___ a map to show us the way.", a: "drawing" },
+            { q: "My mother is ___ for groceries at the supermarket.", a: "shopping" },
+            { q: "We are ___ for clothes in the mall right now.", a: "shopping" },
+            { q: "The little girl is ___ because she lost her toy.", a: "crying" },
+            { q: "Why is the baby ___ so loudly?", a: "crying" },
+            { q: "They are ___ because the joke was very funny.", a: "laughing" },
+            { q: "The audience is ___ at the comedian's performance.", a: "laughing" },
+            { q: "The frogs are ___ from lily pad to lily pad.", a: "jumping" },
+            { q: "The children are ___ on the trampoline in the garden.", a: "jumping" },
+            { q: "The birds are ___ south for the winter.", a: "flying" },
+            { q: "The pilot is ___ the plane to London.", a: "flying" },
+            { q: "She is ___ her bicycle in the park.", a: "riding" },
+            { q: "They are ___ horses across the field.", a: "riding" },
+            { q: "The baker is ___ fresh bread this morning.", a: "baking" },
+            { q: "My grandmother is ___ cookies for us.", a: "baking" },
+            { q: "The secretary is ___ a document very fast.", a: "typing" },
+            { q: "He is ___ an email to his boss right now.", a: "typing" },
+            { q: "The plumber is ___ the broken pipe in the bathroom.", a: "fixing" },
+            { q: "My brother is ___ his old computer.", a: "fixing" },
+            { q: "The workers are ___ a new hospital in the city.", a: "building" },
+            { q: "They are ___ a huge sandcastle on the beach.", a: "building" }
         ];
 
-        const feedbackSuccess = ["¡Guau!", "¡Excelente!", "¡Eres un genio!", "¡Buen trabajo!", "¡Maravilloso!", "¡Asombroso!", "¡Espectacular!", "¡Sobresaliente!", "¡Brillante!"];
-        const feedbackFail = ["¡Qué pena!", "¡Incorrecto!", "¡Inténtalo de nuevo!", "¡Uy!", "¡Casi!", "¡Oh no!", "¡Sigue intentando!", "¡Se acabó el tiempo!"];
+        const feedbackSuccess = ["Wow!", "Excellent!", "You are a genius!", "Good job!", "Wonderful!", "Amazing!", "Spectacular!", "Outstanding!", "Brilliant!"];
+        const feedbackFail = ["What a pity!", "Wrong!", "Try again!", "Oops!", "Not quite!", "Oh no!", "Keep trying!", "Time's up!"];
 
-        // --- FUNCIONES CENTRALES Y LÓGICA DE JUEGO ---
         function shuffleArray(array) { return array.sort(() => Math.random() - 0.5); }
 
         function speak(text) {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance(text);
-                // Instrucción estricta: cambiar al idioma correspondiente (español)
-                utterance.lang = 'es-ES'; 
+                utterance.lang = 'en-US';
                 utterance.rate = 0.9;
                 window.speechSynthesis.speak(utterance);
             }
@@ -620,12 +566,11 @@
             if (document.fullscreenElement) document.exitFullscreen().catch(err => console.log("Exit fullscreen error:", err));
         }
 
-        // --- GAME LOGIC ---
         function generateRandomQuestion() {
             const qObj = QUESTION_BANK[Math.floor(Math.random() * QUESTION_BANK.length)];
             const questionText = qObj.q;
             const answer = qObj.a;
-            const hint = HINTS[answer] || "¡Piensa en verbos continuos!";
+            const hint = HINTS[answer] || "Think about the action taking place!";
 
             let availableWords = VOCAB_WORDS.filter(w => w !== answer);
             availableWords = shuffleArray(availableWords);
@@ -641,7 +586,7 @@
             const isNameValid = availableStudentNames.some(name => name.toLowerCase() === playerName.toLowerCase());
 
             if (!playerName || !isNameValid) {
-                document.getElementById('name-error').innerText = "¡Por favor, selecciona un nombre válido de la lista!";
+                document.getElementById('name-error').innerText = "Please select a valid name from the list!";
                 document.getElementById('name-error').classList.remove('hidden');
                 return;
             }
@@ -674,8 +619,8 @@
                     textEl.innerText = countdown;
                     speak(countdown.toString());
                 } else if (countdown === 0) {
-                    textEl.innerText = "¡YA!";
-                    speak("¡Ya!");
+                    textEl.innerText = "GO!";
+                    speak("Go!");
                 } else {
                     clearInterval(interval);
                     window.switchScreen('playing-screen');
@@ -716,7 +661,7 @@
 
         function updateUI() {
             level = Math.floor(score / 10) + 1;
-            document.getElementById('level-display').innerText = `Nivel ${level}`;
+            document.getElementById('level-display').innerText = `Level ${level}`;
             document.getElementById('score-display').innerText = score;
             renderHearts();
         }
@@ -729,7 +674,7 @@
             
             const timerBar = document.getElementById('timer-bar');
             timerBar.style.width = '100%';
-            timerBar.className = 'bg-gradient-to-r from-emerald-400 to-green-500 h-2 transition-all duration-100 ease-linear';
+            timerBar.className = 'bg-gradient-to-r from-emerald-400 to-teal-500 h-2 transition-all duration-100 ease-linear';
 
             timerInterval = setInterval(() => {
                 if (isProcessing) return;
@@ -810,7 +755,6 @@
 
             const isCorrect = selectedOption === currentQ.answer;
 
-            // Visual feedback
             const buttons = document.getElementById('options-container').querySelectorAll('button');
             buttons.forEach(b => {
                 b.classList.remove('hover:scale-[1.02]', 'active:scale-[0.98]', 'cursor-pointer', 'hover:border-emerald-400', 'hover:text-emerald-600', 'bg-white', 'text-slate-700', 'border-slate-200');
@@ -882,7 +826,7 @@
                 }
             });
 
-            const msg = "¡Se acabó el tiempo!";
+            const msg = "Time's up!";
             const overlay = document.getElementById('feedback-overlay');
             const feedbackText = document.getElementById('feedback-text');
             
@@ -910,14 +854,14 @@
             document.getElementById('final-time').innerText = totalTimeAlive.toFixed(1);
             
             window.switchScreen('gameover-screen');
-            speak("Juego terminado. ¡Hiciste lo mejor que pudiste!");
+            speak("Game Over. You did your best!");
 
             const rawName = playerName || "Unknown";
             const rawScore = Number(score);
             const rawTime = Number(parseFloat(totalTimeAlive).toFixed(1));
 
-            // SISTEMA ANTI-TRAMPA: Generar token de seguridad ofuscado con la nueva semilla
-            const _0x1a2b=["-presentcontinuousHL","-"];
+            // SISTEMA ANTI-TRAMPA: Token adaptado para "-PresentContinuousHL"
+            const _0x1a2b=["\x2D\x50\x72\x65\x73\x65\x6E\x74\x43\x6F\x6E\x74\x69\x6E\x75\x6F\x75\x73\x48\x4C","\x2D"];
             const _0x3f5c = rawScore + _0x1a2b[1] + rawName + _0x1a2b[0];
             const securityToken = btoa(unescape(encodeURIComponent(_0x3f5c)));
 
@@ -958,7 +902,6 @@
             updateLeaderboardUI();
         }
 
-        // --- GOOGLE SHEETS FETCHING LOGIC ---
         async function fetchLeaderboardData() {
             if (GOOGLE_SHEETS_URL.trim() === "") {
                 updateLeaderboardUI();
@@ -1042,21 +985,21 @@
                 const top5 = leaderboardData.slice(0, 5);
                 miniList.innerHTML = '';
                 if (top5.length === 0) {
-                    miniList.innerHTML = '<p class="text-emerald-200/50 text-center mt-4">¡Sin récords aún! ¡Sé el primero!</p>';
+                    miniList.innerHTML = '<p class="text-teal-200/50 text-center mt-4">No records yet! Be the first!</p>';
                 } else {
                     top5.forEach((row, index) => {
                         const div = document.createElement('div');
                         div.className = 'flex justify-between items-center bg-white/5 px-4 py-3 rounded-xl border border-white/5';
-                        const isTop1 = index === 0 ? 'text-yellow-400 font-bold' : 'text-emerald-100';
+                        const isTop1 = index === 0 ? 'text-yellow-400 font-bold' : 'text-gray-200';
                         
                         div.innerHTML = `
                             <div class="flex items-center space-x-3 truncate">
                                 <span class="${isTop1} text-lg">#${index + 1}</span>
-                                <span class="font-medium truncate max-w-[120px] text-left text-base text-white">${row.name}</span>
+                                <span class="font-medium truncate max-w-[120px] text-left text-base">${row.name}</span>
                             </div>
                             <div class="flex flex-col items-end">
                                 <span class="text-teal-300 font-bold text-sm">${row.score} pts</span>
-                                <span class="text-emerald-200/50 text-xs">${row.timeAlive}s</span>
+                                <span class="text-gray-400 text-xs">${row.timeAlive}s</span>
                             </div>
                         `;
                         miniList.appendChild(div);
@@ -1069,22 +1012,22 @@
                 const top50 = leaderboardData.slice(0, 50); 
                 listEl.innerHTML = '';
                 if (top50.length === 0) {
-                    listEl.innerHTML = '<tr><td colspan="4" class="text-center p-6 text-emerald-500">Cargando récords en vivo...</td></tr>';
+                    listEl.innerHTML = '<tr><td colspan="4" class="text-center p-6 text-teal-500">Loading live records...</td></tr>';
                 } else {
                     top50.forEach((row, index) => {
                         const tr = document.createElement('tr');
-                        tr.className = 'border-b border-emerald-800 hover:bg-emerald-800/50 transition-colors last:border-0';
+                        tr.className = 'border-b border-teal-800 hover:bg-teal-800/50 transition-colors last:border-0';
                         
-                        let rankStyle = 'text-emerald-500 font-bold text-lg md:text-xl';
+                        let rankStyle = 'text-teal-500 font-bold text-lg md:text-xl';
                         if (index === 0) rankStyle = 'text-yellow-400 font-black text-xl md:text-2xl drop-shadow-md';
-                        if (index === 1) rankStyle = 'text-emerald-300 font-black text-lg md:text-xl drop-shadow-sm';
-                        if (index === 2) rankStyle = 'text-teal-400 font-black text-lg md:text-xl drop-shadow-sm';
+                        if (index === 1) rankStyle = 'text-slate-300 font-black text-lg md:text-xl drop-shadow-sm';
+                        if (index === 2) rankStyle = 'text-orange-500 font-black text-lg md:text-xl drop-shadow-sm';
 
                         tr.innerHTML = `
                             <td class="p-4 md:px-6 ${rankStyle}">#${index + 1}</td>
                             <td class="p-4 md:px-6 font-bold text-white truncate max-w-[120px] md:max-w-[200px]">${row.name}</td>
-                            <td class="p-4 md:px-6 text-center font-black text-teal-400 text-lg md:text-xl">${row.score}</td>
-                            <td class="p-4 md:px-6 text-right text-emerald-400">${row.timeAlive}s</td>
+                            <td class="p-4 md:px-6 text-center font-black text-sky-400 text-lg md:text-xl">${row.score}</td>
+                            <td class="p-4 md:px-6 text-right text-teal-400">${row.timeAlive}s</td>
                         `;
                         listEl.appendChild(tr);
                     });
