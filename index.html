@@ -3,537 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Present Continuous Master</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>English Elegance: Present Continuous Masterclass</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@300;400;500;600&display=swap');
+
+        :root {
+            --primary: #FF7EB3;
+            --secondary: #FF758C;
+            --bg-gradient: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            --text-main: #333;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none; /* Previene la selección de texto */
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-            /* Elegante fondo rosado/lila */
-            background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
-            background-attachment: fixed;
-            color: #4a4a4a;
-            user-select: none; /* Anti-selección */
-            overflow-x: hidden;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-main);
+            overflow: hidden;
         }
-        h1, h2, h3, .elegant-title {
-            font-family: 'Playfair Display', serif;
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px 0 rgba(199, 137, 185, 0.37);
-            border-radius: 24px;
-        }
-        .btn-elegant {
-            background: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
-            color: white;
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 117, 140, 0.4);
         }
-        .btn-elegant:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 6px 20px rgba(255, 117, 140, 0.6);
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
         }
+
+        p.subtitle {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Buscador */
+        .search-container {
+            position: relative;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .search-container label {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            margin-top: 5px;
+            border: 2px solid #ffb6c1;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary);
+        }
+
+        #user-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border: 1px solid #eee;
+            border-radius: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: none;
+        }
+
+        #user-list div {
+            padding: 12px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #f5f5f5;
+            transition: background 0.2s;
+        }
+
+        #user-list div:hover {
+            background: #fff0f5;
+            color: var(--primary);
+        }
+
+        /* Botones */
+        button {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            color: var(--white);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: 'Poppins', sans-serif;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 117, 140, 0.4);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+
+        /* Juego UI */
+        .hidden { display: none !important; }
+        
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: var(--secondary);
+            border-bottom: 2px solid #fff0f5;
+            padding-bottom: 10px;
+        }
+
+        .question-box {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
         .option-btn {
-            background: rgba(255, 255, 255, 0.7);
-            border: 2px solid #ff7eb3;
-            color: #d84b7a;
+            background: var(--white);
+            color: var(--text-main);
+            border: 2px solid #ffb6c1;
+            padding: 15px;
+            border-radius: 15px;
+            font-size: 1rem;
+            cursor: pointer;
             transition: all 0.3s;
         }
+
         .option-btn:hover {
-            background: #ff7eb3;
-            color: white;
+            background: #fff0f5;
+            border-color: var(--primary);
         }
-        .correct-ans { background: #4ade80 !important; color: white !important; border-color: #4ade80 !important; }
-        .wrong-ans { background: #f87171 !important; color: white !important; border-color: #f87171 !important; }
-        
-        /* Animaciones */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+
+        /* Anti-plagio footer */
+        .anti-cheat-warning {
+            font-size: 0.75rem;
+            color: #ff4d4d;
+            margin-top: 20px;
         }
-        .floating { animation: float 4s ease-in-out infinite; }
-        
-        #game-screen, #leaderboard-screen { display: none; }
+
+        /* Leaderboard */
+        .leaderboard-box {
+            background: #fff0f5;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .leaderboard-box h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .options-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem; }
+        }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4" oncontextmenu="return false;">
+<body>
 
-    <!-- PANTALLA DE INICIO / LOGIN -->
-    <div id="login-screen" class="glass-card w-full max-w-lg p-8 transform transition-all">
-        <div class="text-center mb-8">
-            <h1 class="elegant-title text-4xl text-pink-700 font-bold mb-2 floating">English Elegance</h1>
-            <p class="text-pink-900 opacity-80">Present Continuous Masterclass</p>
+    <!-- PANTALLA DE INICIO -->
+    <div id="screen-login" class="container">
+        <h1>English Elegance</h1>
+        <p class="subtitle">Present Continuous Masterclass</p>
+
+        <div class="search-container">
+            <label>Busca y selecciona tu nombre:</label>
+            <input type="text" id="searchInput" placeholder="Haz clic o escribe para buscar..." autocomplete="off">
+            <div id="user-list"></div>
         </div>
-        
-        <div class="space-y-6">
-            <div class="relative">
-                <label class="block text-sm font-medium text-pink-900 mb-2">Busca y selecciona tu nombre</label>
-                <input type="text" id="user-search" placeholder="Cargando estudiantes..." class="w-full p-4 rounded-xl border border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white/70 shadow-inner" autocomplete="off">
-                <ul id="search-results" class="absolute z-10 w-full bg-white/90 backdrop-blur-md border border-pink-200 rounded-xl mt-1 max-h-48 overflow-y-auto hidden shadow-lg text-left"></ul>
-            </div>
-            
-            <button onclick="iniciarJuego()" class="btn-elegant w-full py-4 rounded-xl font-bold text-lg tracking-wide uppercase">
-                Comenzar Aventura
-            </button>
-        </div>
-        
-        <div class="mt-6 text-center text-xs text-pink-800 opacity-70">
-            <p>Sistema Anti-Plagio Activado. No salgas de la pantalla.</p>
-        </div>
+
+        <button id="btnStart" disabled>COMENZAR AVENTURA</button>
+        <p class="anti-cheat-warning">🛡️ Sistema Anti-Plagio Activado. No salgas de la pantalla.</p>
     </div>
 
     <!-- PANTALLA DE JUEGO -->
-    <div id="game-screen" class="glass-card w-full max-w-3xl p-6 md:p-10 transform transition-all relative">
-        <!-- HUD -->
-        <div class="flex justify-between items-center mb-8 border-b border-pink-200 pb-4">
-            <div class="flex items-center space-x-4">
-                <div class="bg-pink-100 text-pink-700 px-4 py-2 rounded-full font-bold shadow-sm">
-                    Pts: <span id="score">0</span>
-                </div>
-                <div class="bg-purple-100 text-purple-700 px-4 py-2 rounded-full font-bold shadow-sm">
-                    Dificultad: <span id="difficulty-label">Fácil</span>
-                </div>
-            </div>
-            <div class="text-2xl font-bold text-pink-600 w-16 text-right">
-                <span id="timer">30</span>s
-            </div>
+    <div id="screen-game" class="container hidden">
+        <div class="game-header">
+            <span id="level-display">Nivel 1</span>
+            <span id="score-display">Puntos: 0</span>
         </div>
-
-        <!-- Área de Pregunta -->
-        <div class="text-center mb-8">
-            <p class="text-sm text-pink-500 font-semibold mb-2" id="question-instruction">Completa la oración</p>
-            <h2 class="elegant-title text-3xl md:text-4xl text-gray-800 mb-6" id="question-text">She ___ (play) the piano.</h2>
+        <div class="question-box" id="question-text">
+            Cargando pregunta...
         </div>
-
-        <!-- Opciones -->
-        <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <!-- Botones inyectados vía JS -->
-        </div>
-        
-        <!-- Input para niveles difíciles (oculto por defecto) -->
-        <div id="input-container" class="hidden text-center space-y-4">
-            <input type="text" id="answer-input" placeholder="Escribe tu respuesta aquí..." class="w-full p-4 rounded-xl border-2 border-pink-300 focus:outline-none focus:border-pink-500 bg-white/80 text-lg text-center" autocomplete="off" onpaste="return false;" oncopy="return false;">
-            <button onclick="checkInputAnswer()" class="btn-elegant px-8 py-3 rounded-xl font-bold">Verificar</button>
+        <div class="options-grid" id="options-container">
+            <!-- Botones generados dinámicamente -->
         </div>
     </div>
 
-    <!-- PANTALLA DE LEADERBOARD -->
-    <div id="leaderboard-screen" class="glass-card w-full max-w-2xl p-8 transform transition-all">
-        <div class="text-center mb-8">
-            <h1 class="elegant-title text-4xl text-pink-700 font-bold mb-2">Salón de la Fama</h1>
-            <p class="text-pink-900 opacity-80">Mejores puntajes</p>
-        </div>
+    <!-- PANTALLA DE RESULTADOS -->
+    <div id="screen-result" class="container hidden">
+        <h1>¡Completado!</h1>
+        <p class="subtitle" id="final-message"></p>
         
-        <div class="bg-white/50 rounded-2xl p-4 shadow-inner">
-            <ul id="leaderboard-list" class="space-y-3">
-                <li class="text-center text-pink-600">Cargando resultados...</li>
-            </ul>
+        <div class="leaderboard-box">
+            <h3>Tu Puntuación Final</h3>
+            <h2 id="final-score" style="font-size: 2.5rem; color: #333;">0</h2>
+            <p id="cheat-report" style="color: #ff4d4d; font-size: 0.9rem; margin-top:10px;"></p>
         </div>
-        
-        <div class="mt-8 text-center">
-            <p class="text-lg font-bold text-gray-800 mb-2">Tu puntaje final: <span id="final-score-display" class="text-pink-600">0</span></p>
-            <button onclick="location.reload()" class="btn-elegant px-8 py-3 rounded-xl font-bold mt-4">Jugar de Nuevo</button>
-        </div>
+
+        <p id="save-status" style="margin-top: 20px; color: #666;">Guardando resultados en la base de datos...</p>
     </div>
 
     <script>
-        // --- BASE DE DATOS DE PREGUNTAS ---
-        const questionsDB = {
-            easy: [
-                { q: "She ___ (read) a fascinating book right now.", opts: ["is reading", "are reading", "am reading", "reads"], ans: "is reading" },
-                { q: "They ___ (play) tennis in the club.", opts: ["is playing", "are playing", "plays", "am playing"], ans: "are playing" },
-                { q: "I ___ (study) for my English exam.", opts: ["is studying", "are studying", "am studying", "studies"], ans: "am studying" },
-                { q: "Look! The cat ___ (sleep) on the sofa.", opts: ["are sleeping", "sleeps", "am sleeping", "is sleeping"], ans: "is sleeping" },
-                { q: "We ___ (watch) a romantic movie.", opts: ["am watching", "is watching", "are watching", "watches"], ans: "are watching" }
-            ],
-            medium: [
-                { q: "¿Cuál es la forma correcta? 'He (not / work) today.'", opts: ["He is not working today.", "He are not working today.", "He not is working today.", "He doesn't working today."], ans: "He is not working today." },
-                { q: "¿Cuál es la forma correcta? '(You / listen) to me?'", opts: ["Are you listening to me?", "Is you listening to me?", "Do you listening to me?", "Am you listening to me?"], ans: "Are you listening to me?" },
-                { q: "The kids ___ (run) in the garden.", opts: ["is runing", "are running", "are runing", "is running"], ans: "are running" },
-                { q: "My mother ___ (bake) a delicious cake.", opts: ["is bakeing", "are baking", "is baking", "am baking"], ans: "is baking" }
-            ],
-            hard: [
-                // Para nivel difícil, usarán el input de texto
-                { q: "Escribe la oración en Present Continuous: 'She / drink / coffee'", ans: "She is drinking coffee" },
-                { q: "Escribe la oración en Present Continuous: 'They / not / dance'", ans: "They are not dancing" },
-                { q: "Transforma a pregunta: 'You are studying.'", ans: "Are you studying?" }
-            ]
-        };
-
-        // --- VARIABLES DE ESTADO ---
-        const WEB_APP_URL = "PON_AQUI_LA_URL_DE_TU_WEB_APP_DE_GOOGLE"; // <-- ¡CRÍTICO: Reemplaza esto!
-        
-        let currentUsers = [];
-        let selectedUser = null;
-        let clientIP = "Desconocida";
-        let dbRowId = null;
-        
-        let score = 0;
-        let currentDifficulty = 'easy'; // easy, medium, hard
-        let questionCount = 0;
-        let currentQuestion = null;
-        let timerInterval;
-        let timeLeft = 30;
-        let cheatWarnings = 0;
-        let isGameActive = false;
-
-        // --- INICIALIZACIÓN ---
-        window.onload = async () => {
-            // Prevenir atajos de teclado para inspeccionar
-            document.addEventListener('keydown', (e) => {
-                if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73) || (e.ctrlKey && e.keyCode == 85)) {
-                    e.preventDefault();
-                    return false;
-                }
-            });
-
-            // Obtener IP
-            try {
-                const res = await fetch('https://api.ipify.org?format=json');
-                const data = await res.json();
-                clientIP = data.ip;
-            } catch (e) {
-                console.log("No se pudo obtener IP localmente");
-            }
-
-            // Cargar usuarios desde Apps Script vía Fetch
-            if (WEB_APP_URL === "PON_AQUI_LA_URL_DE_TU_WEB_APP_DE_GOOGLE") {
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Falta configurar la URL',
-                    text: 'Recuerda reemplazar WEB_APP_URL en el código con el enlace de tu Google Apps Script.',
-                    confirmButtonColor: '#ff7eb3'
-                });
-                // Datos de prueba simulados basados en tu hoja
-                currentUsers = [
-                    {name: "Hugo Luque", grade: "1", section: "A"},
-                    {name: "Idalia Telleria", grade: "2", section: "B"},
-                    {name: "Gato Malo", grade: "3", section: "C"}
-                ];
-                setupSearch();
-            } else {
-                fetch(WEB_APP_URL + '?action=getUsers', { redirect: 'follow' })
-                    .then(res => res.json())
-                    .then(users => {
-                        if(!users.error) {
-                            currentUsers = users;
-                            setupSearch();
-                        } else {
-                            console.error("Error del servidor:", users.error);
-                        }
-                    })
-                    .catch(err => {
-                        console.error("Error de conexión:", err);
-                        Swal.fire('Error de Conexión', 'No se pudieron cargar los datos de la hoja Listado. Verifica que Apps Script tenga acceso "Cualquier persona".', 'error');
-                    });
-            }
-        };
-
-        function setupSearch() {
-            const searchInput = document.getElementById('user-search');
-            const resultsList = document.getElementById('search-results');
-            searchInput.placeholder = "Haz clic para ver o buscar tu nombre...";
-
-            // Función interna para dibujar la lista
-            const renderList = (users) => {
-                resultsList.innerHTML = '';
-                if(users.length > 0) {
-                    resultsList.classList.remove('hidden');
-                    users.forEach(u => {
-                        const li = document.createElement('li');
-                        li.className = 'p-3 hover:bg-pink-100 cursor-pointer text-pink-800 border-b border-pink-50 last:border-0 transition-colors';
-                        li.textContent = `${u.name} - Grado: ${u.grade} "${u.section}"`; // Formato mejorado
-                        
-                        // Usamos mousedown en lugar de click para que se dispare antes de que el input pierda el foco
-                        li.onmousedown = (e) => {
-                            e.preventDefault(); // Evitar que el input pierda foco prematuramente
-                            searchInput.value = u.name;
-                            selectedUser = u;
-                            resultsList.classList.add('hidden');
-                        };
-                        resultsList.appendChild(li);
-                    });
-                } else {
-                    resultsList.classList.remove('hidden');
-                    const li = document.createElement('li');
-                    li.className = 'p-3 text-pink-500 italic';
-                    li.textContent = "No se encontraron estudiantes con ese nombre";
-                    resultsList.appendChild(li);
-                }
-            };
-
-            // Mostrar toda la lista al hacer clic o enfocar el cuadro de texto
-            searchInput.addEventListener('focus', () => {
-                renderList(currentUsers);
-            });
-            
-            searchInput.addEventListener('click', () => {
-                renderList(currentUsers);
-            });
-
-            // Filtrar la lista a medida que se escribe
-            searchInput.addEventListener('input', (e) => {
-                const term = e.target.value.toLowerCase().trim();
-                selectedUser = null; // Reiniciar selección al escribir algo nuevo
-
-                if (term === '') {
-                    renderList(currentUsers);
-                } else {
-                    const filtered = currentUsers.filter(u => u.name.toLowerCase().includes(term));
-                    renderList(filtered);
-                }
-            });
-
-            // Ocultar resultados si hace click fuera del buscador
-            document.addEventListener('click', (e) => {
-                if(!searchInput.contains(e.target) && !resultsList.contains(e.target)) {
-                    resultsList.classList.add('hidden');
-                }
-            });
-        }
-
-        // --- FLUJO DEL JUEGO ---
-        function iniciarJuego() {
-            if (!selectedUser) {
-                Swal.fire({
-                    icon: 'warning',
-                    title: '¡Oops!',
-                    text: 'Por favor busca y selecciona tu nombre de la lista antes de comenzar.',
-                    confirmButtonColor: '#ff7eb3'
-                });
-                return;
-            }
-            
-            // Maximizar pantalla (requiere interacción del usuario, por eso se hace aquí)
-            try {
-                if (document.documentElement.requestFullscreen) {
-                    document.documentElement.requestFullscreen().catch(e=>console.log(e));
-                }
-            } catch(e) {}
-
-            // Registrar inicio en DB vía Fetch
-            fetch(WEB_APP_URL, {
-                method: 'POST',
-                // Usamos text/plain para evitar las restricciones de preflight CORS en navegadores
-                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                body: JSON.stringify({ action: 'logStart', user: selectedUser, ip: clientIP })
-            })
-            .then(res => res.json())
-            .then(data => { dbRowId = data.rowId; })
-            .catch(err => console.error("Error al registrar inicio", err));
-
-            // Cambiar pantallas
-            document.getElementById('login-screen').style.display = 'none';
-            document.getElementById('game-screen').style.display = 'block';
-            
-            isGameActive = true;
-            nextQuestion();
-        }
-
-        function nextQuestion() {
-            if(questionCount >= 10) {
-                terminarJuego();
-                return;
-            }
-
-            // Ajustar dificultad basada en progreso
-            if(questionCount < 4) currentDifficulty = 'easy';
-            else if (questionCount < 7) currentDifficulty = 'medium';
-            else currentDifficulty = 'hard';
-
-            document.getElementById('difficulty-label').textContent = 
-                currentDifficulty === 'easy' ? 'Nivel Básico' : 
-                currentDifficulty === 'medium' ? 'Nivel Intermedio' : 'Nivel Experto';
-
-            const pool = questionsDB[currentDifficulty];
-            currentQuestion = pool[Math.floor(Math.random() * pool.length)];
-            
-            renderQuestion();
-            questionCount++;
-            
-            // Reiniciar timer
-            timeLeft = currentDifficulty === 'hard' ? 40 : 25;
-            document.getElementById('timer').textContent = timeLeft;
-            clearInterval(timerInterval);
-            timerInterval = setInterval(updateTimer, 1000);
-        }
-
-        function renderQuestion() {
-            document.getElementById('question-text').textContent = currentQuestion.q;
-            const optsContainer = document.getElementById('options-container');
-            const inputContainer = document.getElementById('input-container');
-            const answerInput = document.getElementById('answer-input');
-
-            if (currentDifficulty === 'hard') {
-                optsContainer.classList.add('hidden');
-                inputContainer.classList.remove('hidden');
-                answerInput.value = '';
-                answerInput.focus();
-                document.getElementById('question-instruction').textContent = "Escribe la respuesta correcta (respeta mayúsculas y puntuación básica)";
-            } else {
-                optsContainer.classList.remove('hidden');
-                inputContainer.classList.add('hidden');
-                optsContainer.innerHTML = '';
-                document.getElementById('question-instruction').textContent = "Selecciona la opción correcta";
-                
-                // Mezclar opciones
-                let options = [...currentQuestion.opts].sort(() => Math.random() - 0.5);
-                
-                options.forEach(opt => {
-                    const btn = document.createElement('button');
-                    btn.className = 'option-btn p-4 rounded-xl font-bold text-lg shadow-sm';
-                    btn.textContent = opt;
-                    btn.onclick = () => handleOptionClick(btn, opt);
-                    optsContainer.appendChild(btn);
-                });
-            }
-        }
-
-        function updateTimer() {
-            timeLeft--;
-            document.getElementById('timer').textContent = timeLeft;
-            if (timeLeft <= 0) {
-                clearInterval(timerInterval);
-                Swal.fire({
-                    icon: 'error',
-                    title: '¡Tiempo agotado!',
-                    text: 'Se acabó el tiempo para esta pregunta.',
-                    confirmButtonColor: '#ff7eb3',
-                    timer: 1500,
-                    showConfirmButton: false
-                }).then(() => {
-                    nextQuestion();
-                });
-            }
-        }
-
-        function handleOptionClick(btnElement, selectedOpt) {
-            clearInterval(timerInterval);
-            const isCorrect = selectedOpt === currentQuestion.ans;
-            
-            // Deshabilitar todos los botones
-            const buttons = document.querySelectorAll('.option-btn');
-            buttons.forEach(b => b.disabled = true);
-
-            if (isCorrect) {
-                btnElement.classList.add('correct-ans');
-                score += (currentDifficulty === 'easy' ? 10 : 20);
-                document.getElementById('score').textContent = score;
-                playSuccessEffect();
-            } else {
-                btnElement.classList.add('wrong-ans');
-                // Mostrar la correcta
-                buttons.forEach(b => {
-                    if(b.textContent === currentQuestion.ans) b.classList.add('correct-ans');
-                });
-            }
-
-            setTimeout(nextQuestion, 1500);
-        }
-
-        function checkInputAnswer() {
-            clearInterval(timerInterval);
-            const inputVal = document.getElementById('answer-input').value.trim();
-            
-            // Limpieza básica para evaluar de forma más justa
-            const cleanInput = inputVal.toLowerCase().replace(/[.!?]/g, '').trim();
-            const cleanAns = currentQuestion.ans.toLowerCase().replace(/[.!?]/g, '').trim();
-
-            if (cleanInput === cleanAns) {
-                score += 30; // Más puntos por ser difícil
-                document.getElementById('score').textContent = score;
-                Swal.fire({ icon: 'success', title: '¡Excelente!', text: 'Respuesta perfecta.', timer: 1200, showConfirmButton: false });
-                playSuccessEffect();
-            } else {
-                Swal.fire({ icon: 'error', title: 'Incorrecto', text: `La respuesta era: ${currentQuestion.ans}`, confirmButtonColor: '#ff7eb3' });
-            }
-
-            setTimeout(nextQuestion, 2000);
-        }
-
-        function playSuccessEffect() {
-            // Un pequeño efecto visual (confeti o destello) podría ir aquí.
-            document.getElementById('game-screen').classList.add('scale-105');
-            setTimeout(() => document.getElementById('game-screen').classList.remove('scale-105'), 200);
-        }
-
-        function terminarJuego() {
-            isGameActive = false;
-            clearInterval(timerInterval);
-            
-            document.getElementById('game-screen').style.display = 'none';
-            document.getElementById('leaderboard-screen').style.display = 'block';
-            document.getElementById('final-score-display').textContent = score;
-
-            // Guardar score en DB y luego obtener Leaderboard
-            if (dbRowId) {
-                fetch(WEB_APP_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                    body: JSON.stringify({ action: 'saveScore', rowId: dbRowId, score: score })
-                })
-                .then(() => fetch(WEB_APP_URL + '?action=getLeaderboard'))
-                .then(res => res.json())
-                .then(data => {
-                    if(!data.error) renderLeaderboard(data);
-                })
-                .catch(err => {
-                    console.error("Error al guardar/cargar leaderboard", err);
-                    renderLeaderboard([{name: selectedUser.name, score: score}]);
-                });
-            } else {
-                // Mock si no hay conexión
-                renderLeaderboard([
-                    {name: selectedUser.name, score: score},
-                    {name: "Ana (Demo)", score: 120}
-                ]);
-            }
-        }
-
-        function renderLeaderboard(data) {
-            const list = document.getElementById('leaderboard-list');
-            list.innerHTML = '';
-            data.sort((a,b) => b.score - a.score).forEach((entry, idx) => {
-                const li = document.createElement('li');
-                li.className = `flex justify-between items-center p-3 rounded-lg ${idx === 0 ? 'bg-yellow-100 font-bold text-yellow-700' : 'bg-pink-50 text-pink-800'}`;
-                
-                let medal = idx === 0 ? '🥇 ' : idx === 1 ? '🥈 ' : idx === 2 ? '🥉 ' : `${idx+1}. `;
-                li.innerHTML = `<span>${medal} ${entry.name}</span> <span class="bg-white px-3 py-1 rounded-full shadow-sm">${entry.score} pts</span>`;
-                list.appendChild(li);
-            });
-        }
-
-        // --- SISTEMA ANTI-PLAGIO (Monitoreo) ---
-        document.addEventListener("visibilitychange", () => {
-            if (document.hidden && isGameActive) {
-                cheatWarnings++;
-                score = Math.max(0, score - 15); // Restar puntos
-                document.getElementById('score').textContent = score;
-                
-                Swal.fire({
-                    icon: 'warning',
-                    title: '¡Advertencia de Plagio!',
-                    text: 'Hemos detectado que saliste de la pestaña o minimizaste el navegador. Se han restado 15 puntos por seguridad.',
-                    confirmButtonColor: '#d33',
-                    allowOutsideClick: false
-                });
-            }
-        });
-        
-        window.addEventListener('blur', () => {
-             if (isGameActive && !Swal.isVisible()) {
-                cheatWarnings++;
-                // Lógica similar para cuando la ventana pierde el foco
-             }
-        });
-
-    </script>
-</body>
-</html>
+        // ================= CONFIGURACIÓN =================
+        // REEMPLAZA ESTO CON LA URL DE TU APLICACIÓN WEB DE APPS SCRIPT
+        const WEB_APP_URL = "PON_AQUI_LA_NUEVA_URL_DE_TU_
