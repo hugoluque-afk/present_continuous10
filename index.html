@@ -19,7 +19,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            user-select: none; /* Previene la selección de texto */
+            user-select: none;
         }
 
         body {
@@ -57,7 +57,6 @@
             margin-bottom: 30px;
         }
 
-        /* Buscador */
         .search-container {
             position: relative;
             margin-bottom: 25px;
@@ -113,7 +112,6 @@
             color: var(--primary);
         }
 
-        /* Botones */
         button {
             background: linear-gradient(to right, var(--secondary), var(--primary));
             color: var(--white);
@@ -141,7 +139,6 @@
             transform: none;
         }
 
-        /* Juego UI */
         .hidden { display: none !important; }
         
         .game-header {
@@ -182,14 +179,12 @@
             border-color: var(--primary);
         }
 
-        /* Anti-plagio footer */
         .anti-cheat-warning {
             font-size: 0.75rem;
             color: #ff4d4d;
             margin-top: 20px;
         }
 
-        /* Leaderboard */
         .leaderboard-box {
             background: #fff0f5;
             padding: 20px;
@@ -202,7 +197,6 @@
             margin-bottom: 10px;
         }
 
-        /* Responsive */
         @media (max-width: 600px) {
             .options-grid { grid-template-columns: 1fr; }
             h1 { font-size: 2rem; }
@@ -211,7 +205,6 @@
 </head>
 <body>
 
-    <!-- PANTALLA DE INICIO -->
     <div id="screen-login" class="container">
         <h1>English Elegance</h1>
         <p class="subtitle">Present Continuous Masterclass</p>
@@ -226,7 +219,6 @@
         <p class="anti-cheat-warning">🛡️ Sistema Anti-Plagio Activado. No salgas de la pantalla.</p>
     </div>
 
-    <!-- PANTALLA DE JUEGO -->
     <div id="screen-game" class="container hidden">
         <div class="game-header">
             <span id="level-display">Nivel 1</span>
@@ -236,11 +228,9 @@
             Cargando pregunta...
         </div>
         <div class="options-grid" id="options-container">
-            <!-- Botones generados dinámicamente -->
         </div>
     </div>
 
-    <!-- PANTALLA DE RESULTADOS -->
     <div id="screen-result" class="container hidden">
         <h1>¡Completado!</h1>
         <p class="subtitle" id="final-message"></p>
@@ -255,6 +245,5 @@
     </div>
 
     <script>
-        // ================= CONFIGURACIÓN =================
-        // REEMPLAZA ESTO CON LA URL DE TU APLICACIÓN WEB DE APPS SCRIPT
-        const WEB_APP_URL = "PON_AQUI_LA_NUEVA_URL_DE_TU_
+        // URL configurada con tu último Apps Script
+        const WEB_APP_URL = "
