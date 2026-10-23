@@ -73,11 +73,10 @@
         </div>
         
         <div class="space-y-6">
-            <div>
-                <label class="block text-sm font-medium text-pink-900 mb-2">Selecciona tu nombre</label>
-                <select id="user-select" class="w-full p-4 rounded-xl border border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white/70 shadow-inner">
-                    <option value="">Cargando estudiantes...</option>
-                </select>
+            <div class="relative">
+                <label class="block text-sm font-medium text-pink-900 mb-2">Busca y selecciona tu nombre</label>
+                <input type="text" id="user-search" placeholder="Cargando estudiantes..." class="w-full p-4 rounded-xl border border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white/70 shadow-inner" autocomplete="off">
+                <ul id="search-results" class="absolute z-10 w-full bg-white/90 backdrop-blur-md border border-pink-200 rounded-xl mt-1 max-h-48 overflow-y-auto hidden shadow-lg text-left"></ul>
             </div>
             
             <button onclick="iniciarJuego()" class="btn-elegant w-full py-4 rounded-xl font-bold text-lg tracking-wide uppercase">
@@ -208,44 +207,80 @@
             fetch(WEB_APP_URL + '?action=getUsers')
                 .then(res => res.json())
                 .then(users => {
-                    if(!users.error) populateDropdown(users);
+                    if(!users.error) {
+                        currentUsers = users;
+                        setupSearch();
+                    }
                 })
                 .catch(err => {
                     console.error("Error cargando usuarios", err);
                     // Mock fallback en caso de error
-                    populateDropdown([
+                    currentUsers = [
                         {name: "María Fernanda", grade: "4to", section: "A"},
                         {name: "Valentina Sofia", grade: "4to", section: "B"}
-                    ]);
+                    ];
+                    setupSearch();
                 });
         };
 
-        function populateDropdown(users) {
-            currentUsers = users;
-            const select = document.getElementById('user-select');
-            select.innerHTML = '<option value="">-- Elige tu nombre hermoso --</option>';
-            users.forEach((u, index) => {
-                const opt = document.createElement('option');
-                opt.value = index;
-                opt.textContent = `${u.name} (${u.grade} ${u.section})`;
-                select.appendChild(opt);
+        function setupSearch() {
+            const searchInput = document.getElementById('user-search');
+            const resultsList = document.getElementById('search-results');
+            searchInput.placeholder = "Escribe tu nombre para buscar...";
+
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                resultsList.innerHTML = '';
+                selectedUser = null; // Reiniciar selección al escribir
+
+                if(term.length < 1) {
+                    resultsList.classList.add('hidden');
+                    return;
+                }
+
+                const filtered = currentUsers.filter(u => u.name.toLowerCase().includes(term));
+                
+                if(filtered.length > 0) {
+                    resultsList.classList.remove('hidden');
+                    filtered.forEach(u => {
+                        const li = document.createElement('li');
+                        li.className = 'p-3 hover:bg-pink-100 cursor-pointer text-pink-800 border-b border-pink-50 last:border-0 transition-colors';
+                        li.textContent = `${u.name} (${u.grade} ${u.section})`;
+                        li.onclick = () => {
+                            searchInput.value = u.name;
+                            selectedUser = u;
+                            resultsList.classList.add('hidden');
+                        };
+                        resultsList.appendChild(li);
+                    });
+                } else {
+                    resultsList.classList.remove('hidden');
+                    const li = document.createElement('li');
+                    li.className = 'p-3 text-pink-500 italic';
+                    li.textContent = "No se encontraron estudiantes";
+                    resultsList.appendChild(li);
+                }
+            });
+
+            // Ocultar resultados si hace click fuera
+            document.addEventListener('click', (e) => {
+                if(!searchInput.contains(e.target) && !resultsList.contains(e.target)) {
+                    resultsList.classList.add('hidden');
+                }
             });
         }
 
         // --- FLUJO DEL JUEGO ---
         function iniciarJuego() {
-            const select = document.getElementById('user-select');
-            if (select.value === "") {
+            if (!selectedUser) {
                 Swal.fire({
                     icon: 'warning',
                     title: '¡Oops!',
-                    text: 'Por favor selecciona tu nombre antes de comenzar.',
+                    text: 'Por favor busca y selecciona tu nombre de la lista antes de comenzar.',
                     confirmButtonColor: '#ff7eb3'
                 });
                 return;
             }
-            
-            selectedUser = currentUsers[select.value];
             
             // Maximizar pantalla (requiere interacción del usuario, por eso se hace aquí)
             try {
