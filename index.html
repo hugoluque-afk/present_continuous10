@@ -203,24 +203,37 @@
                 console.log("No se pudo obtener IP localmente");
             }
 
-            // Cargar usuarios desde Apps Script vía Fetch (compatible con GitHub)
-            fetch(WEB_APP_URL + '?action=getUsers')
-                .then(res => res.json())
-                .then(users => {
-                    if(!users.error) {
-                        currentUsers = users;
-                        setupSearch();
-                    }
-                })
-                .catch(err => {
-                    console.error("Error cargando usuarios", err);
-                    // Mock fallback en caso de error
-                    currentUsers = [
-                        {name: "María Fernanda", grade: "4to", section: "A"},
-                        {name: "Valentina Sofia", grade: "4to", section: "B"}
-                    ];
-                    setupSearch();
+            // Cargar usuarios desde Apps Script vía Fetch
+            if (WEB_APP_URL === "PON_AQUI_LA_URL_DE_TU_WEB_APP_DE_GOOGLE") {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Falta configurar la URL',
+                    text: 'Recuerda reemplazar WEB_APP_URL en el código con el enlace de tu Google Apps Script.',
+                    confirmButtonColor: '#ff7eb3'
                 });
+                // Datos de prueba simulados basados en tu hoja
+                currentUsers = [
+                    {name: "Hugo Luque", grade: "1", section: "A"},
+                    {name: "Idalia Telleria", grade: "2", section: "B"},
+                    {name: "Gato Malo", grade: "3", section: "C"}
+                ];
+                setupSearch();
+            } else {
+                fetch(WEB_APP_URL + '?action=getUsers', { redirect: 'follow' })
+                    .then(res => res.json())
+                    .then(users => {
+                        if(!users.error) {
+                            currentUsers = users;
+                            setupSearch();
+                        } else {
+                            console.error("Error del servidor:", users.error);
+                        }
+                    })
+                    .catch(err => {
+                        console.error("Error de conexión:", err);
+                        Swal.fire('Error de Conexión', 'No se pudieron cargar los datos de la hoja Listado. Verifica que Apps Script tenga acceso "Cualquier persona".', 'error');
+                    });
+            }
         };
 
         function setupSearch() {
@@ -236,7 +249,8 @@
                     users.forEach(u => {
                         const li = document.createElement('li');
                         li.className = 'p-3 hover:bg-pink-100 cursor-pointer text-pink-800 border-b border-pink-50 last:border-0 transition-colors';
-                        li.textContent = `${u.name} (${u.grade} ${u.section})`;
+                        li.textContent = `${u.name} - Grado: ${u.grade} "${u.section}"`; // Formato mejorado
+                        
                         // Usamos mousedown en lugar de click para que se dispare antes de que el input pierda el foco
                         li.onmousedown = (e) => {
                             e.preventDefault(); // Evitar que el input pierda foco prematuramente
@@ -250,7 +264,7 @@
                     resultsList.classList.remove('hidden');
                     const li = document.createElement('li');
                     li.className = 'p-3 text-pink-500 italic';
-                    li.textContent = "No se encontraron estudiantes";
+                    li.textContent = "No se encontraron estudiantes con ese nombre";
                     resultsList.appendChild(li);
                 }
             };
@@ -266,11 +280,15 @@
 
             // Filtrar la lista a medida que se escribe
             searchInput.addEventListener('input', (e) => {
-                const term = e.target.value.toLowerCase();
+                const term = e.target.value.toLowerCase().trim();
                 selectedUser = null; // Reiniciar selección al escribir algo nuevo
 
-                const filtered = currentUsers.filter(u => u.name.toLowerCase().includes(term));
-                renderList(filtered);
+                if (term === '') {
+                    renderList(currentUsers);
+                } else {
+                    const filtered = currentUsers.filter(u => u.name.toLowerCase().includes(term));
+                    renderList(filtered);
+                }
             });
 
             // Ocultar resultados si hace click fuera del buscador
