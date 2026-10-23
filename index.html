@@ -226,27 +226,20 @@
         function setupSearch() {
             const searchInput = document.getElementById('user-search');
             const resultsList = document.getElementById('search-results');
-            searchInput.placeholder = "Escribe tu nombre para buscar...";
+            searchInput.placeholder = "Haz clic para ver o buscar tu nombre...";
 
-            searchInput.addEventListener('input', (e) => {
-                const term = e.target.value.toLowerCase();
+            // Función interna para dibujar la lista
+            const renderList = (users) => {
                 resultsList.innerHTML = '';
-                selectedUser = null; // Reiniciar selección al escribir
-
-                if(term.length < 1) {
-                    resultsList.classList.add('hidden');
-                    return;
-                }
-
-                const filtered = currentUsers.filter(u => u.name.toLowerCase().includes(term));
-                
-                if(filtered.length > 0) {
+                if(users.length > 0) {
                     resultsList.classList.remove('hidden');
-                    filtered.forEach(u => {
+                    users.forEach(u => {
                         const li = document.createElement('li');
                         li.className = 'p-3 hover:bg-pink-100 cursor-pointer text-pink-800 border-b border-pink-50 last:border-0 transition-colors';
                         li.textContent = `${u.name} (${u.grade} ${u.section})`;
-                        li.onclick = () => {
+                        // Usamos mousedown en lugar de click para que se dispare antes de que el input pierda el foco
+                        li.onmousedown = (e) => {
+                            e.preventDefault(); // Evitar que el input pierda foco prematuramente
                             searchInput.value = u.name;
                             selectedUser = u;
                             resultsList.classList.add('hidden');
@@ -260,9 +253,27 @@
                     li.textContent = "No se encontraron estudiantes";
                     resultsList.appendChild(li);
                 }
+            };
+
+            // Mostrar toda la lista al hacer clic o enfocar el cuadro de texto
+            searchInput.addEventListener('focus', () => {
+                renderList(currentUsers);
+            });
+            
+            searchInput.addEventListener('click', () => {
+                renderList(currentUsers);
             });
 
-            // Ocultar resultados si hace click fuera
+            // Filtrar la lista a medida que se escribe
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                selectedUser = null; // Reiniciar selección al escribir algo nuevo
+
+                const filtered = currentUsers.filter(u => u.name.toLowerCase().includes(term));
+                renderList(filtered);
+            });
+
+            // Ocultar resultados si hace click fuera del buscador
             document.addEventListener('click', (e) => {
                 if(!searchInput.contains(e.target) && !resultsList.contains(e.target)) {
                     resultsList.classList.add('hidden');
